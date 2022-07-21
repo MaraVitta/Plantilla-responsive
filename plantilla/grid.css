@@ -1,0 +1,136 @@
+:root {
+    --color-primary: #d0c9c0;
+    --color-secondary: #efead8;
+    --color-found: #7991bf;
+    --color-found-2: #3a7268;
+    --color-card: #33593c;
+    --color-border: #000000;
+    --color-texts: #f2f2f2;
+  }
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    background: var(--color-primary);
+  }
+  header p {
+    font-size: 25px;
+    padding: 20px 0;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  ul li a {
+    color: var(--color-texts);
+    text-decoration: none;  
+  }
+  ul {
+    list-style: none;
+  }
+  .container {
+    width: 90%;
+    max-width: 1200px;
+    border: 1px solid var(--color-border);
+    color: var(--color-texts);
+    margin: 10px auto;
+    font-size: 15px;
+    line-height: 15px;
+  }
+  .container .head {
+    background: var(--color-found);
+    color: var(--color-texts);
+  }
+  .container div,
+  .container .head,
+  .container .contenido,
+  .container .lateral {
+    display: block;
+    padding: 10px;
+  }
+  .container .contenido {
+    background: var(--color-found-2);
+  }
+  .container .lateral{
+    background: var(--color-found);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100px;
+  }
+  .container .card-1, 
+  .container .card-2,
+  .container .card-3 {
+    background: var(--color-card);
+    height: 150px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .container footer{
+    background:var(--color-found-2);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    min-height: 100px;
+  }
+
+/*ACA EMPIEZAN LOS ESTILOS CON GRID CSS*/
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, auto);
+  grid-gap: 10px;
+  grid-template-areas:
+    "header header header header"
+    "contenido contenido contenido lateral"
+    "card-1 card-2 card-3 lateral"
+    "pie pie pie pie";
+}
+.container .head {
+  /*grid-column-start: 1;
+  grid-column-end: -1;*/
+  grid-area: header;
+}
+.container .contenido {
+  /*grid-column: span 3;*/
+  grid-area: contenido;
+}
+.card-1 {
+    grid-area:card-1;
+}
+.card-2 {
+    grid-area:card-2;
+}
+.card-3 {
+    grid-area:card-3;
+}
+.container .lateral {
+  /*grid-column: 4/5;
+    grid-row:2/6 ;*/
+  grid-area: lateral;
+}
+.pie {
+    grid-area: pie;
+}
+
+@media screen and (max-width:768px) {
+   .container {
+    grid-template-areas:
+    "header header header header"
+    "contenido contenido contenido contenido"
+    "lateral lateral lateral lateral"
+    "card-1 card-1 card-1 card-1"
+    "card-2 card-2 card-2 card-2"
+    "card-3 card-3 card-3 card-3"
+
+    "pie pie pie pie";
+   }
+    
+}
